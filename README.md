@@ -5,37 +5,50 @@
 используемые средства поддержания целостности. При выборе подходящих типов данных
 использовать информацию о конкретных значениях полей БД (см. прил.1)
 ~~~SQL
-CREATE TABLE АВТОМОБИЛЬ
+CREATE TABLE "АВТОМОБИЛЬ"
 (
-	ИДЕНТИФИКАТОР SERIAL PRIMARY KEY,
-	МАРКА VARCHAR(50) NOT NULL,
+	"ИДЕНТИФИКАТОР" SERIAL PRIMARY KEY,
+	"МАРКА" VARCHAR(50) NOT NULL,
 	"АТП-ВЛАДЕЛЕЦ" VARCHAR(50) NOT NULL,
-	СКИДКА SMALLINT NOT NULL
+	"СКИДКА, %" SMALLINT NOT NULL
 );
 
-CREATE TABLE ГАРАЖ
+CREATE TABLE "ГАРАЖ"
 (
-	ИДЕНТИФИКАТОР SERIAL PRIMARY KEY,
-	НОМЕР INT NOT NULL,
-	РАСПОЛОЖЕНИЕ VARCHAR(50) NOT NULL,
-	КОМИССИОННЫЕ SMALLINT NOT NULL
+	"ИДЕНТИФИКАТОР" SERIAL PRIMARY KEY,
+	"НОМЕР" INT NOT NULL,
+	"РАСПОЛОЖЕНИЕ" VARCHAR(50) NOT NULL,
+	"КОММИССИОННЫЕ, %" SMALLINT NOT NULL
 );
 
-CREATE TABLE ДЕТАЛИ
+CREATE TABLE "ДЕТАЛИ"
 (
-	ИДЕНТИФИКАТОР SERIAL PRIMARY KEY,
-	ДЕТАЛЬ VARCHAR(50) NOT NULL,
-	ПРОДАВЕЦ VARCHAR(50) NOT NULL,
+	"ИДЕНТИФИКАТОР" SERIAL PRIMARY KEY,
+	"ДЕТАЛЬ" VARCHAR(50) NOT NULL,
+	"ПРОДАВЕЦ" VARCHAR(50) NOT NULL,
 	"СТОИМОСТЬ, РУБ" INT NOT NULL,
 	"МАКС. КОЛ-ВО" INT NOT NULL
 );
 
-CREATE TABLE РЕМОНТ
+CREATE TABLE "РЕМОНТ"
 (
-	ИДЕНТИФИКАТОР SERIAL PRIMARY KEY,
-	ДЕТАЛЬ VARCHAR(50) NOT NULL,
-	ПРОДАВЕЦ VARCHAR(50) NOT NULL,
-	"СТОИМОСТЬ, РУБ" INT NOT NULL,
-	"МАКС. КОЛ-ВО" INT NOT NULL
+	"НОМЕР ЗАКАЗА" SERIAL PRIMARY KEY,
+	"АВТОМОБИЛЬ" VARCHAR(50) NOT NULL,
+	"ДАТА" date NOT NULL,
+	"ГАРАЖ" VARCHAR(50) NOT NULL,
+	"ДЕТАЛИ" VARCHAR(50) NOT NULL,
+	"КОЛ-ВО" INT NOT NULL,
+	"ОБЩАЯ СТОИМОСТЬ, РУБ" INT NOT NULL
 );
 ~~~
+2. Ввести в ранее созданные таблицы конкретные данные (см. прил. 1). Использовать скрипт-файл из
+операторов INSERT или вспомогательную утилиту.
+~~~SQL
+INSERT INTO "АВТОМОБИЛЬ" ("ИДЕНТИФИКАТОР", "МАРКА", "АТП-ВЛАДЕЛЕЦ", "СКИДКА, %") 
+VALUES ('001', 'Газ-24', 	'АТП1', 4),
+	   ('002', 'Газ-52', 	'АТП1', 0),
+	   ('003', 'Зил-130',	'АТП3', 3),
+	   ('004', 'Зил-133',	'АТП4', 5),
+	   ('005', 'Газ-1222',  'АТП5', 4);
+~~~
+![alt text](https://github.com/Nkulbaka1/LAB_2/assets/129120650/8b2bf90f-16e5-4156-b8bc-7dfcae47c780)
