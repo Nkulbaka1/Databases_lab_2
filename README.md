@@ -138,6 +138,7 @@ FROM "РЕМОНТ";
 ~~~
 ![alt text](https://github.com/Nkulbaka1/LAB_2/assets/129120650/f569e044-4812-4b36-a8ca-2b36c9f42c1a)
 4. Создать запросы для вывода:
+
 a) всех различных марок автомобилей;
 ~~~SQL
 SELECT DISTINCT "МАРКА"
